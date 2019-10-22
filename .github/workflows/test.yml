@@ -1,0 +1,31 @@
+name: test
+
+on:
+  - pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+
+      - name: Get Node versiom from .nvmrc
+        run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: nvm
+
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '${{ steps.nvm.outputs.NVMRC }}'
+
+      - name: Install Yarn
+        run: npm install -g yarn -v 1.19.1
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --offline
+
+      - name: Tests
+        run: yarn test

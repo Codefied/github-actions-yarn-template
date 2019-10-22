@@ -1,0 +1,31 @@
+{
+  "name": "github-actions-yarn-template",
+  "version": "0.0.1",
+  "description": "GitHub Action template for Node + Yarn",
+  "main": "src/index.js",
+  "repository": "git@github.com:Codefied/github-actions-yarn-template.git",
+  "author": "Eric M. Johnson <eric.johnson@housecallpro.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "npx tsc",
+    "build-watch": "npx tsc -watch",
+    "format": "prettier --write src/**/*.ts",
+    "format-check": "prettier --check src/**/*.ts",
+    "test": "npx jest",
+    "test-watch": "npx jest --watch"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^1.1.0",
+    "@types/node": "^12.11.2",
+    "tsc": "^1.20150623.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.19",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.6.4"
+  }
+}
